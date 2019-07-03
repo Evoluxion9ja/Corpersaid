@@ -21,6 +21,16 @@ Route::match(['GET', 'POST'], '/register', [
     'as' => 'home.register'
 ]);
 
+Route::match(['GET', 'POST'], '/admin', [
+    'uses' => 'AdminController@login',
+    'as' => 'admin.login'
+]);
+
+Route::match(['GET', 'POST'], 'admin/dashboard', [
+    'uses' => 'AdminController@dashboard',
+    'as' => 'admin.dashboard'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

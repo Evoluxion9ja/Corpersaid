@@ -1,7 +1,7 @@
 <div class="container-fluid fixed-top bg-white nav-bar2">
     <div class="container">
         <nav class="navbar navbar-expand-lg px-0">
-            <a class="navbar-brand" href="{{'/'}}"><img class="logo-music" src="assets/images/corpersaid-logo.svg" alt="corpersaid logo"></a>
+            <a class="navbar-brand" href="{{'/'}}"><img class="logo-music" src="{{asset('assets/images/corpersaid-logo.svg')}}" alt="corpersaid logo"></a>
             <button class="navbar-toggler text-dark" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="fa fa-bars color-black"></span>
             </button>
