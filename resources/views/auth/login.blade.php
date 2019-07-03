@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-@include('partials._header')
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="icon" type="image/png" href="{{asset('assets/images/corpersaid-favicon.png')}}"/>
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/corpersaid.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/font-awesome/css/all.min.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <title>Corpers Aid | Home</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/coppers_css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/coppers_css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/coppers_css/iofrm-style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/coppers_css/iofrm-theme15.css')}}">
+</head>
+<body>
     <!-- navbar -->
         @include('partials._nav')
-    <!-- <navbar end> -->
+        <!-- <navbar end> -->
     <div class="form-body">
         <div class="website-logo">
             <a href="index.html">
                 <div class="logo">
-                    <img class="logo-size" src="images/logo-light.svg" alt="">
+                    <img class="logo-size" src="images/coppers_images/logo-light.svg" alt="">
                 </div>
             </a>
         </div>
@@ -24,54 +43,50 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="page-links">
-                            <a href="{{route('login')}}" class="active">Login</a><a href="{{route('register')}}">Register</a>
+                            <a href="login.html" class="active">Login</a><a href="register.html">Register</a>
                         </div>
                         <form method="POST" action="{{ route('login') }}">
                             {{csrf_field()}}
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail Address" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-                                    @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <div class="form-button">
+                                <button type="submit" class="btn btn-primary ibtn">
+                                    {{ __('Login') }}
+                                </button>
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                                </div><br><br>
-                                <div class="col-md-12"><hr><br>
-                                    <div class="other-links">
-                                        <span>Or login with</span><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                </div>
-                                
                             </div>
                         </form>
-                        
+                        <div class="other-links">
+                            <span>Or login with</span><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="{{asset('js/coppers_js/jquery.min.js')}}"></script>
+<script src="{{asset('js/coppers_js/popper.min.js')}}"></script>
+<script src="{{asset('js/coppers_js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/coppers_js/main.js')}}"></script>
 </body>
 </html>

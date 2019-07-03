@@ -13,7 +13,8 @@
 
     </head>
     <body>
-        <div id="loginbox">            
+        <div id="loginbox">
+            @include('partials._validate')            
             <form id="loginform" class="form-vertical" action="{{route('admin.login')}}" method="POST">
                 {{csrf_field()}}
 				 <div class="control-group normal_text"> <h3><img src="{{asset('assets/images/corpersaid-logo.svg')}}" alt="Logo" /><span>Admin</span></h3></div>
@@ -53,6 +54,7 @@
         </div>
         
         <script src="{{asset('js/backend_js/jquery.min.js')}}"></script>  
-        <script src="{{asset('js/backend_js/matrix.login.js')}}"></script> 
+        <script src="{{asset('js/backend_js/matrix.login.js')}}"></script>
+        <script src="{{asset('js/backend_js/bootstrap.min.js')}}"></script>  
     </body>
 </html>
