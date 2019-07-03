@@ -1,0 +1,163 @@
+@media (min-width: 320px) and (max-width: 767px) {
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+.nav-link{
+	font-weight: 500 !important;
+	  color: #000;
+	  font-size: 13px;
+	  float: left;
+	  padding: 7px 10px;
+	  text-align: left;
+	  text-decoration: none;
+}
+.nav-link:hover{
+	color: #04BB97;
+}
+.find-btn-click{
+	text-align: center;
+} 
+.caret {
+    padding: 5px 5px 0 5px;
+}
+.select-option2 {
+    width: 100%;
+    padding: 4px;
+    font-size: 12px;
+    background-color: #F7F7F7;
+    /* border: 1px solid #ccc; */
+}
+.search-section2 {
+    background: #FFFFFF;
+    border-radius: 37.5px;
+    padding: 15px;
+    display: block;
+    width: 65%;
+}
+.categories{
+	display: flex;
+	justify-content: center;
+}
+.categories img{
+	width: 23.8%;
+	padding: 2px;
+	text-align: center;
+}
+.enter-search2{
+	font-size: 12px;
+	border: 1px solid #D8D8D8;
+	padding: 9px 10px;
+	width: 8rem;
+	border-radius: 30px;
+}
+.select-3 {
+    display: flex;
+    padding: 0px 8px;
+    background-color: #F7F7F7;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+.share-on p{
+	padding: 5px;
+	color: #888888;
+}
+.share-social .fab{
+	font-size: 17px;
+}
+.google-btn{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	background-color: #D50000;
+	border-radius: 50%;
+	padding: 5px;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.twitter-btn{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	background-color: #40C4FF;
+	border-radius: 50%;
+	padding: 5px;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.facebook-btn{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	background-color: #0288D1;
+	border-radius: 50%;
+	padding: 5px;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.whatsapp-btn{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	background-color: #16A085;
+	border-radius: 50%;
+	padding: 5px;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.services-description {
+    padding-top: 15px;
+    padding-left: 10px;
+}
+.service-price p {
+    background: #04BB97;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 5px 5px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.picture-upload{
+	display: block;
+	
+}
+.clear-field-btn {
+	background: #fff;
+    border: 1px solid #04BB97;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+    font-size: 12px;
+    color: #565252;
+    letter-spacing: 0;
+    text-align: center;
+    padding: 7px;
+}
+.enter-description, .enter-title,.enter-region,.select-5{
+	width: 100% !important;
+}
+.upload1{
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+.search-section{
+	padding: 35% 0 20%;
+}
+.categories img{
+	width: 24%;
+	padding: 5px;
+}
+
+}
+
+@media (min-width: 800px) and (max-width: 1280px) {
+.search-section{
+	padding: 25% 0 20%;
+}
+.categories img{
+	width: 24%;
+	padding: 5px;
+}
+
+}

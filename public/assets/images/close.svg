@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="51px" viewBox="0 0 50 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-10.4%" y="-8.4%" width="120.7%" height="116.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy-2" transform="translate(-666.000000, -308.000000)" fill="#D50000" stroke="#FFFFFF">
+            <g id="Rectangle-Copy-8" filter="url(#filter-1)" transform="translate(489.000000, 312.000000)">
+                <path d="M202,5 C193.75,5 187,11.75 187,20 C187,28.25 193.75,35 202,35 C210.25,35 217,28.25 217,20 C217,11.75 210.25,5 202,5 L202,5 Z M209.5,25.4 L207.4,27.5 L202,22.1 L196.6,27.5 L194.5,25.4 L199.9,20 L194.5,14.6 L196.6,12.5 L202,17.9 L207.4,12.5 L209.5,14.6 L204.1,20 L209.5,25.4 L209.5,25.4 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
