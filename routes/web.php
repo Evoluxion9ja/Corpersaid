@@ -75,7 +75,11 @@ Route::match(['DELETE'], 'add-location/{id}', [
     'as' => 'location.destroy'
 ]);
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Routing for posts
+Route::match(['GET', 'POST'], '/start-posting', [
+    'uses' => 'PostController@index',
+    'as' => 'post.start'
+]);
+Auth::routes();
 
