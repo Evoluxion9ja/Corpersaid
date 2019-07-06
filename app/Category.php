@@ -11,10 +11,10 @@ class Category extends Model
     }
 
     public function posts(){
-        return $this->hasMany('posts');
+        return $this->hasMany('App\Post');
     }
 
-    public function subCategories(){
-        return $this->belongsToMany('App\SubCategory');
+    public function locations(){
+        return $this->belongsTo('App\Location');
     }
 }

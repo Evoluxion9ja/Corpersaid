@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
 use App\User;
+use App\Category;
 
 class AdminController extends Controller
 {
@@ -20,15 +21,115 @@ class AdminController extends Controller
                 return redirect()->route('admin.login')->withError('Invalid Username or Password');
             }
         }
-        return view('admin.login');
+        return view('coppers.admin_dashboard.admin_login');
     }
 
     public function dashboard(){
         if(Session::has('adminSession')){
             //Do whatever is in here which should mostly be left empty
         }else{
-            return redirect()->route('admin.login')->withError('Please Make sure you are an admin');
+            return redirect()->route('admin.login')->withError('Please To Access Dashboard, You Nedd To Be An Admin');
         }
-        return view('admin.dashboard');
+        return view('coppers.admin_dashboard.admin_dashboard')->withSuccess('Welcome to your Dashboard');
     }
+
+
+    //Category Starts from here
+    public function addCategory(){
+        if(Session::has('adminSession')){
+        
+        }else{
+            return redirect()->route('admin.login')->withError('Please Login as Admin To Manage Categories');
+        }
+            $categories = Category::orderBy('id', 'desc')->get();
+            return view('coppers.category.category',[
+                'categories' => $categories
+            ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeCategory(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255|min:3',
+            'description' => 'required|min:3|max:255',
+            'url' => 'required|min:3|max:255|alpha-dash'
+        ]);
+
+        $categories = new Category;
+        $categories->name = $request->input('name');
+        $categories->description = $request->input('description');
+        $categories->url = $request->input('url');
+        $categories->save();
+
+        return redirect()->route('admin.category')->withSuccess('Category Created Successfully');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showCategory($id)
+    {
+        $categories = Category::find($id);
+        return view('coppers.category.show',[
+            'categories' => $categories
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateCategory(Request $request, $id)
+    {
+        $category = Category::find($id);
+        if($request->input('url') == $category->url){
+            $this->validate($request, [
+                'name' => 'required|max:255|min:3',
+                'description' => 'required|min:3|max:255',
+            ]);
+        } else{
+            $this->validate($request, [
+                'name' => 'required|max:255|min:3',
+                'description' => 'required|min:3|max:255',
+                'url' => 'required|min:3|max:255|alpha-dash|unique:category,url'
+            ]);
+        }
+
+        $categories =  Category::find($id);
+        $categories->name = $request->input('name');
+        $categories->description = $request->input('description');
+        $categories->url = $request->input('url');
+        $categories->save();
+
+        return redirect()->route('category.show', $categories->id)->withSuccess('Category Updated Successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyCategory($id)
+    {
+        $categories = Category::find($id);
+        $categories->delete();
+
+        return redirect()->route('admin.category')->withSuccess('Category Deleted Successfully');
+    }//Category ends Here---
+
+
+    
 }

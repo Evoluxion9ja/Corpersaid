@@ -23,6 +23,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "@mdi/font": "^3.7.95",
         "font-awesome": "^4.7.0"
     }
 }
