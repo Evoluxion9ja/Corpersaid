@@ -5,27 +5,27 @@
         <div class="col-md-6 grid-margin stretch-card">
           <div class="card">
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    {{strtoupper(__('Create A New Category'))}}
+                    {{strtoupper(__('Create A New Location'))}}
                 </button>
                 @include('partials._validate')
                 <div class="collapse" id="collapseExample">
                     <div class="card-body">
                         <p class="card-description">
-                            <h3>Create Category</h3><hr>
+                            <h3>Create Locations</h3><hr>
                         </p>
-                        <form class="forms-sample" action="{{route('category.store')}}" method="POST" data-parsley-validate>
+                        <form class="forms-sample" action="{{route('location.store')}}" method="POST" data-parsley-validate>
                             {{csrf_field()}}
                             <div class="form-group">
-                            <label for="exampleInputUsername1">Category Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Category Name" required>
+                            <label for="exampleInputUsername1">Location Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Location Name" required>
                             </div>
                             <div class="form-group">
-                            <label for="exampleInputEmail1">Category Description</label>
+                            <label for="exampleInputEmail1">Location Description</label>
                             <input type="text" class="form-control" name="description" id="description" placeholder="Description" required>
                             </div>
                             <div class="form-group">
-                            <label for="exampleInputPassword1">Category Url</label>
-                            <input type="text" class="form-control" name="url" id="url" placeholder="Category Url" required>
+                            <label for="exampleInputPassword1">Location Url</label>
+                            <input type="text" class="form-control" name="url" id="url" placeholder="Location Url" required>
                             </div>
                             <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                         </form>
@@ -43,21 +43,21 @@
                     <th><strong>{{strtoupper('Actions')}}</strong></th>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($locations as $location)
                         <tr>
-                            <th><strong><small>{{$category->id}}</small></strong></th>
-                            <td><strong><small>{{$category->name}}</small></strong></td>
-                            <td><strong><small>{{str_limit($category->description, 50)}}</small></strong></td>
+                            <th><strong><small>{{$location->id}}</small></strong></th>
+                            <td><strong><small>{{$location->name}}</small></strong></td>
+                            <td><strong><small>{{str_limit($location->description, 50)}}</small></strong></td>
                             <td>
-                                @if ($category->posts->count() <= 1)
-                                    <strong><small>{{$category->posts->count()}} Post</small></strong>
+                                @if ($location->posts->count() <= 1)
+                                    <strong><small>{{$location->posts->count()}} Post</small></strong>
                                     @else 
-                                    <strong><small>{{$category->posts->count()}} Posts</small></strong>
+                                    <strong><small>{{$location->posts->count()}} Posts</small></strong>
                                 @endif
                             </td>
                             <td>
-                                {{Html::linkroute('category.show', 'Details', [$category->id], ['class' => 'btn btn-primary btn-sm', 'style' => 'float:left;margin-right:5px;'])}}
-                                {!! Form::open(['action' => ['AdminController@destroyCategory', $category->id], 'method' => 'DELETE']) !!}
+                                {{Html::linkroute('location.show', 'Details', [$location->id], ['class' => 'btn btn-primary btn-sm', 'style' => 'float:left;margin-right:5px;'])}}
+                                {!! Form::open(['action' => ['AdminController@destroyLocation', $location->id], 'method' => 'DELETE']) !!}
                                     {{form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
                                 {!! Form::close() !!}
                             </td>

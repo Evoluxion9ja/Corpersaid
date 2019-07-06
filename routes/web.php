@@ -31,6 +31,7 @@ Route::match(['GET', 'POST'], 'admin/dashboard', [
     'uses' => 'AdminController@dashboard',
     'as' => 'admin.dashboard'
 ]);
+//Category Sections
 Route::match(['GET', 'POST'], 'admin/add-category', [
     'uses' => 'AdminController@addCategory',
     'as' => 'admin.category'
@@ -51,20 +52,26 @@ Route::match(['PUT'], 'add-category/{id}',[
     'uses' => 'AdminController@updateCategory',
     'as' => 'category.update'
 ]);
+
+//Locations Section
 Route::match(['GET', 'POST'], 'admin/add-location',[
-    'uses' => 'LocationController@addLocation',
+    'uses' => 'AdminController@addLocation',
     'as' => 'admin.location'
 ]);
 Route::match(['GET', 'POST'], 'add-location/store', [
-    'uses' => 'LocationController@store',
+    'uses' => 'AdminController@storeLocation',
     'as' => 'location.store'
 ]);
 Route::match(['GET', 'POST'], 'add-location/{id}', [
-    'uses' => 'LocationController@show',
+    'uses' => 'AdminController@showLocation',
     'as' => 'location.show'
 ]);
+Route::match(['PUT'], 'add-category/{id}',[
+    'uses' => 'AdminController@updateLocation',
+    'as' => 'location.update'
+]);
 Route::match(['DELETE'], 'add-location/{id}', [
-    'uses' => 'LocationController@destroy',
+    'uses' => 'AdminController@destroyLocation',
     'as' => 'location.destroy'
 ]);
 
