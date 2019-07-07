@@ -81,5 +81,13 @@ Route::match(['GET', 'POST'], '/start-posting', [
     'uses' => 'PostController@index',
     'as' => 'post.start'
 ]);
+Route::match(['GET','POST'], '/post-listing',[
+    'uses' => 'PostController@create',
+    'as' => 'post.create'
+]);
+Route::match(['GET', 'POST'], 'post-listing/store', [
+    'uses' => 'PostController@store',
+    'as' => 'post.store'
+]);
 Auth::routes();
 

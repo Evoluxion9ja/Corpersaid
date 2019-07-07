@@ -21,5 +21,7 @@
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/corpersaid.js')}}"></script>
+<!--Form Validation Parsley-->
+{{Html::script('js/dashboard/parsley.min.js')}}
 </body>
 </html>

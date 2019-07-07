@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Post;
+use App\Location;
+use App\User;
 
 class PostController extends Controller
 {
@@ -23,7 +27,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $locations = Location::all();
+        return view('posting.post_listing',[
+            'categories' => $categories,
+            'locations' => $locations
+        ]);
     }
 
     /**
@@ -34,7 +43,42 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category_id' => 'required|integer',
+            'location_id' => 'required|integer',
+            'title' => 'required|max:255',
+            'description' => 'required|max:300',
+            'email' => 'email|required|max:255',
+            'phone' => 'required|max:15',
+            'images.*' => 'image|nullable|mimes:jpeg,jpg,png,gif,svg|max:2000'
+        ]);
+
+        if($request->hasFile('images')){
+            foreach ($request->file('images') as $images) {
+                $imageNameNoExt = $images->getClientOriginalName();
+                $imageName = pathinfo($imageNameNoExt, PATHINFO_FILENAME);
+                $imageExtension = $images->getClientOriginalExtension();
+                $imageRealName = $imageName.'_'.time().'.'.$imageExtension;
+                $images->move(public_path().'/post_images/',$imageRealName);
+                $data[] = $imageRealName;
+            }
+        }else{
+            $data[] = 'no_image.jpg';
+        }
+
+        $posts = new Post;
+        $posts->user_id = Auth()->user()->id;
+        $posts->category_id = $request->input('category_id');
+        $posts->location_id = $request->input('location_id');
+        $posts->title = $request->input('title');
+        $posts->description = $request->input('description');
+        $posts->email = $request->input('email');
+        $posts->phone = $request->input('phone');
+        $posts->images = json_encode($data);
+
+        $posts->save();
+
+        return redirect()->route('post.create')->withSuccess('Post Created Succesfully');
     }
 
     /**
