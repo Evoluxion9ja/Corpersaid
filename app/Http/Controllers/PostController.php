@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Post;
 use App\Location;
@@ -31,7 +32,7 @@ class PostController extends Controller
         $locations = Location::all();
         return view('posting.post_listing',[
             'categories' => $categories,
-            'locations' => $locations
+            'locations' => $locations,
         ]);
     }
 
@@ -47,6 +48,7 @@ class PostController extends Controller
             'category_id' => 'required|integer',
             'location_id' => 'required|integer',
             'title' => 'required|max:255',
+            'url' => 'required|max:255',
             'description' => 'required|max:300',
             'email' => 'email|required|max:255',
             'phone' => 'required|max:15',
@@ -58,8 +60,9 @@ class PostController extends Controller
                 $imageNameNoExt = $images->getClientOriginalName();
                 $imageName = pathinfo($imageNameNoExt, PATHINFO_FILENAME);
                 $imageExtension = $images->getClientOriginalExtension();
-                $imageRealName = $imageName.'_'.time().'.'.$imageExtension;
-                $images->move(public_path().'/post_images/',$imageRealName);
+                $imageRealName = rand(123456,8765432).'_'.time().'.'.$imageExtension;
+                $location = $images->storeAs('public/post_images/',$imageRealName);
+                //$images->move(public_path().'/post_images/',$imageRealName);
                 $data[] = $imageRealName;
             }
         }else{
@@ -71,6 +74,7 @@ class PostController extends Controller
         $posts->category_id = $request->input('category_id');
         $posts->location_id = $request->input('location_id');
         $posts->title = $request->input('title');
+        $posts->url = $request->input('url');
         $posts->description = $request->input('description');
         $posts->email = $request->input('email');
         $posts->phone = $request->input('phone');

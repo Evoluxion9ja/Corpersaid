@@ -17,9 +17,9 @@
 							<div class="select-2">
 								<select class="select-option">
 									<option>Select Location</option>
-									<option>Yaba</option>
-									<option>Egbeda</option>
-									<option>Victoria Island</option>
+									@foreach ($locations as $location)
+										<option value="{{$location->id}}">{{$location->name}}</option>
+									@endforeach
 								</select>
 								<div class="caret">
 									<i class="fas fa-caret-down"></i>
@@ -31,10 +31,9 @@
 							<div class="select-2">
 								<select class="select-option">
 									<option>Select Category </option>
-									<option>To Let</option>
-									<option>For Sale</option>
-									<option>Services</option>
-									<option>PPA</option>
+									@foreach ($categories as $category)
+										<option value="{{$category->id}}">{{$category->name}}</option>
+									@endforeach
 								</select>
 								<div class="caret">
 									<i class="fas fa-caret-down"></i>
@@ -43,13 +42,22 @@
 						</div>
 						<div class="searching">
 							<div class="find-btn-click">
-								<button class="find-btn">Find Now</button>
+								<button class="btn find-btn">Find Now</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="categories">
 					<div>
+						<div class="row">
+							@foreach ($categories as $category)
+								<a href="">
+									<div class="col-md-3">
+										{{$category->name}}
+									</div>
+								</a>
+							@endforeach
+						</div>
 						<a href="tolet.html"><img src="assets/images/tolet.svg"> </a>
 						<a href="forsale.html"><img src="assets/images/for-sale.svg"> </a>
 						<a href="services.html"><img src="assets/images/services.svg"> </a>
@@ -66,6 +74,34 @@
 					<p>Beautifully designed businesses, products and services platform to make your <br>NYSC days interesting, easy and comfortable</p>
 				</div>
 				<div class="row">
+					@foreach ($posts as $post)
+						<div class="col-md-3">
+							<div class="products">
+								<a href="">
+										@php $images = json_decode($post->images,true); @endphp
+										@if(is_array($images) && !empty($images))
+										@foreach ($images as $image)
+											<img src="{{ URL::asset('storage/post_images/'.$image) }}" width="100%"/>
+										@endforeach
+										@endif
+									<div class="product-name">
+										<div class="product-name2">
+											<h5>{{$post->title}}</h5>
+											<div class="dot-menu  dropdown dropleft">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" >
+												  <i class="fas fa-ellipsis-v"></i>
+												</a>
+												<div class="dropdown-menu" >
+												  <a class="dropdown-item" href="#">Contact Client</a>
+												  <a class="dropdown-item" href="#">Share</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					@endforeach
 					<div class="col-md-3">
 						<div class="products">
 							<a href="view.html">

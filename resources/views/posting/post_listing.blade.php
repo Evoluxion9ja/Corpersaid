@@ -2,6 +2,60 @@
 
 @section('content')
 <div class="container">
+    <style>
+        input{
+            background: #eee !important;
+        }
+        textarea{
+            background: #eee !important;
+        }
+        .image-upload1{
+            width: 150px !important;
+            height: 220px !important;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            cursor: pointer;
+        }
+        .file-input-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 150px;
+            height: 220px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .file-input-wrapper>input[type="file"] {
+            font-size: 40px;
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            z-index: 0;
+            cursor: pointer;
+        }
+        .file-input-wrapper>.btn-file-input {
+            background: url('assets/images/camera.svg/');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 4px;
+            color: #000;
+            display: inline-block;
+            height: 150px;
+            margin: 0 0 0 -1px;
+            padding-left: 0;
+            width: 150px;
+            cursor: pointer;
+        }
+        #img_text {
+            float: right;
+            margin-right: -80px;
+            margin-top: -14px;
+        }
+
+    </style>
     @include('partials._validate')
     <h2 class="text-center mb-4">Post Listing</h2>
     <div class="post-details-section">
@@ -23,53 +77,36 @@
                     </select>
                 </div>
             </div><hr>
-            <div class="form-group mb-5">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="input-group control-group increment" >
-                            <button class="upload-btn">Upload A file</button>
-                            <input type="file" name="images[]" class="form-control">
-                            <div class="input-group-btn"> 
-                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add Image</button>
+            <div class="form-group mb-2">
+                    <div class="input-group control-group increment clone" >
+                        <div class="row">
+                            <div class="col-md-3" style="margin-right:50px;">
+                                <div class="image-upload1 file-input-wrapper">
+                                    <button class="btn-file-input">SELECT FILES</button>
+                                    <input type="file" name="images[]" id="images" multiple><br><br>
+                                    <span id="img_text"></span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="clone">
-                            <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="images[]" class="form-control">
-                                <div class="input-group-btn"> 
-                                    <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-plus"></i> Remove</button>
+                            <div class="col-md-3">
+                                <div class="image-upload1 file-input-wrapper">
+                                    <button class="btn-file-input">SELECT FILES</button>
+                                    <input type="file" name="images[]" id="images" multiple><br><br>
+                                    <span id="img_text"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="clone1">
-                            <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="images[]" class="form-control">
-                                <div class="input-group-btn"> 
-                                    <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-plus"></i> Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="clone2">
-                            <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="images[]" class="form-control">
-                                <div class="input-group-btn"> 
-                                    <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-plus"></i> Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div><hr>
             <div class="form-group mb-5">
+                {{form::label('title', 'Post Title')}}
                 {{form::text('title', '', ['class' => 'form-control', 'required' => '', 'placeholder' => 'Item title here'])}}
-            </div><hr>
+            </div>
+            <div class="form-group mb-5">
+                {{form::label('title', 'Post Url')}}
+                {{form::text('url', '', ['class' => 'form-control', 'required' => '', 'placeholder' => 'Item url with dashes inbetween here'])}}
+            </div>
             <div class="form-group mb-4">
+                {{form::label('description', 'Post Description')}}
                 {{form::textarea('description', '', ['class' => 'form-control', 'required' => '', 'place' => 'Give a description for your posted item', 'rows' => '5'])}}
             </div><hr>
             <div class="form-group mb-5">
@@ -84,7 +121,7 @@
                       @endforeach
                     </select>
                 </div>
-            </div><hr>
+            </div>
             <div class="form-group mb-5">
                 {{form::text('phone', '', ['class' => 'form-control', 'required' => '', 'placeholder' => 'Phone Number'])}}
             </div><hr>
@@ -196,7 +233,7 @@
 </div>
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    /*$(document).ready(function() {
 
       $(".btn-success").click(function(){ 
           var html = $(".clone").html();
@@ -206,7 +243,12 @@
       $("body").on("click",".btn-danger",function(){ 
           $(this).parents(".control-group").remove();
       });
+    });*/
+    (function($) {
+    $('input[type="file"]').bind('change', function() {
+        $("#img_text").html($('input[type="file"]').val());
     });
+    })(jQuery)
 
 </script>
 @endsection

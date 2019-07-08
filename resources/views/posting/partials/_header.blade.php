@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/corpersaid.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/font-awesome/css/all.min.css')}}">
+	<link rel="stylesheet" href="/path/to/material-icons/iconfont/material-icons.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
 	<!--Form Validation Parsley-->
 	{{Html::style('css/dashboard/parsley.css')}}

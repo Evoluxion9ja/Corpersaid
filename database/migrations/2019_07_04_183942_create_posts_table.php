@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->text('images');
             $table->text('title');
+            $table->text('url');
             $table->text('description');
             $table->unsignedInteger('location_id');
             $table->text('phone');

@@ -21,7 +21,7 @@
                         <img src="{{asset('assets/images/bars.svg')}}">
                         <p>Start Posting your products and services for every<br> corper in Nigeria to see</p>
                         <div class="start-post">
-                            <a href="{{route('post.create')}}"> <button class="start-posting-btn">Start Posting</button></a>
+                            <a href="{{route('post.create')}}"> <button class="btn start-posting-btn">Start Posting</button></a>
                         </div>
                     </div>
                 </div>
