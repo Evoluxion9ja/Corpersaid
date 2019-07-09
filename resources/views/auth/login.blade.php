@@ -43,7 +43,7 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="page-links">
-                            <a href="login.html" class="active">Login</a><a href="register.html">Register</a>
+                            <a href="{{route('login')}}" class="active">Login</a><a href="{{route('register')}}">Register</a>
                         </div>
                         <form method="POST" action="{{ route('login') }}">
                             {{csrf_field()}}

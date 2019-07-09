@@ -6,6 +6,7 @@
 		@include('posting.partials._nav')
 		<!-- <navbar end> -->
 		<div class="corpersaid-view mt-5" >
+			@yield('stylesheets')
 			@yield('content')
 		</div>
 	</div>

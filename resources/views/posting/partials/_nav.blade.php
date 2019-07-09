@@ -12,13 +12,13 @@
                         <a class="nav-link" href="#"><i class="fa fa-bell"></i><br> Notification</a>
                     </li>
                     <li class="nav-item nav-item-border">
-                        <a class="nav-link " href="mypost.html" ><i class="fas fa-poll-h"></i><br> My Post</a>
+                        <a class="nav-link " href="{{route('post.start')}}" ><i class="fas fa-poll-h"></i><br> My Post</a>
                     </li>
                     <li class="nav-item nav-item-border">
                         <a class="nav-link " href="#" ><i class="fas fa-shopping-cart"></i><br> Subscription</a>
                     </li>
                     <li class="nav-item nav-item-border">
-                        <a class="nav-link active-nav" href="start-post.html" ><i class="fa fa-user-circle"></i><br> Profile</a>
+                        <a class="nav-link active-nav" href="" ><i class="fa fa-user-circle"></i><br> Profile</a>
                     </li>
                     <li class="nav-item ">
                         <div class="dropdown">

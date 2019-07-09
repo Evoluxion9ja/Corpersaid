@@ -77,12 +77,10 @@
 					@foreach ($posts as $post)
 						<div class="col-md-3">
 							<div class="products">
-								<a href="">
+								<a href="{{url('posts/'.$post->url)}}">
 										@php $images = json_decode($post->images,true); @endphp
 										@if(is_array($images) && !empty($images))
-										@foreach ($images as $image)
-											<img src="{{ URL::asset('storage/post_images/'.$image) }}" width="100%"/>
-										@endforeach
+										<img src='{{ URL::asset('storage/post_images/'.$images[0]) }}' width="100%"/>
 										@endif
 									<div class="product-name">
 										<div class="product-name2">
@@ -102,94 +100,6 @@
 							</div>
 						</div>
 					@endforeach
-					<div class="col-md-3">
-						<div class="products">
-							<a href="view.html">
-							<img src="{{asset('assets/images/room.jpg')}}">
-							<div class="product-name">
-								<div class="product-name2">
-									<h5>Hair Style</h5>
-									<div class="dot-menu  dropdown dropleft">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" >
-								          <i class="fas fa-ellipsis-v"></i>
-								        </a>
-								        <div class="dropdown-menu" >
-								          <a class="dropdown-item" href="#">Contact Client</a>
-								          <a class="dropdown-item" href="#">Share</a>
-								        </div>
-									</div>
-								</div>
-								<p>Lagos, Nigeria</p>
-							</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="products">
-							<a href="view.html">
-							<img src="{{asset('assets/images/room.jpg')}}">
-							<div class="product-name">
-								<div class="product-name2">
-									<h5>Hair Style</h5>
-									<div class="dot-menu  dropdown dropleft">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" >
-								          <i class="fas fa-ellipsis-v"></i>
-								        </a>
-								        <div class="dropdown-menu" >
-								          <a class="dropdown-item" href="#">Contact Client</a>
-								          <a class="dropdown-item" href="#">Share</a>
-								        </div>
-									</div>
-								</div>
-								<p>Lagos, Nigeria</p>
-							</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="products">
-							<a href="view.html">
-							<img src="{{asset('assets/images/room.jpg')}}">
-							<div class="product-name">
-								<div class="product-name2">
-									<h5>Hair Style</h5>
-									<div class="dot-menu  dropdown dropleft">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" >
-								          <i class="fas fa-ellipsis-v"></i>
-								        </a>
-								        <div class="dropdown-menu" >
-								          <a class="dropdown-item" href="#">Contact Client</a>
-								          <a class="dropdown-item" href="#">Share</a>
-								        </div>
-									</div>
-								</div>
-								<p>Lagos, Nigeria</p>
-							</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="products">
-							<a href="view.html">
-							<img src="{{asset('assets/images/room.jpg')}}">
-							<div class="product-name">
-								<div class="product-name2">
-									<h5>Hair Style</h5>
-									<div class="dot-menu  dropdown dropleft">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" >
-								          <i class="fas fa-ellipsis-v"></i>
-								        </a>
-								        <div class="dropdown-menu" >
-								          <a class="dropdown-item" href="#">Contact Client</a>
-								          <a class="dropdown-item" href="#">Share</a>
-								        </div>
-									</div>
-								</div>
-								<p>Lagos, Nigeria</p>
-							</div>
-							</a>
-						</div>
-					</div>
 				</div>
 				<div class="see-more text-center mt-5">
 					<button class="find-btn">See More</button>

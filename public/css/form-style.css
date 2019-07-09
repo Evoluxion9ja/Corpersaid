@@ -1,0 +1,54 @@
+<style>
+        input{
+            background: #eee !important;
+        }
+        textarea{
+            background: #eee !important;
+        }
+        .image-upload1{
+            width: 150px !important;
+            height: 220px !important;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            cursor: pointer;
+        }
+        .file-input-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 150px;
+            height: 220px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .file-input-wrapper>input[type="file"] {
+            font-size: 40px;
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            z-index: 0;
+            cursor: pointer;
+        }
+        .file-input-wrapper>.btn-file-input {
+            background: url('assets/images/camera.svg/');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 4px;
+            color: #000;
+            display: inline-block;
+            height: 150px;
+            margin: 0 0 0 -1px;
+            padding-left: 0;
+            width: 150px;
+            cursor: pointer;
+        }
+        #img_text {
+            float: right;
+            margin-right: -80px;
+            margin-top: -14px;
+        }
+
+    </style>

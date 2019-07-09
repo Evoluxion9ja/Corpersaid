@@ -145,6 +145,13 @@ class AdminController extends Controller
             ]);
     }
 
+    public function single($url){
+        $categories = Category::where('url', '=', $url)->first();
+        return view('coppers.category.single', [
+            'categories' => $categories
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

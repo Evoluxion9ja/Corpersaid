@@ -26,4 +26,15 @@ class PagesController extends Controller
     public function register(){
         return view('pages.register');
     }
+
+    public function single($url){
+        $posts = Post::where('url', '=', $url)->first();
+        $locations = Location::all();
+        $categories = Category::all();
+        return view('pages.single',[
+            'posts'  => $posts,
+            'categories' => $categories,
+            'locations' => $locations
+        ]);
+    }
 }

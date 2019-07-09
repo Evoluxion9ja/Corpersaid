@@ -8,7 +8,7 @@
 
                 <div class="collapse navbar-collapse bg-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto menu orange menu-color">
-                        <li class="nav-item ">
+                       <li class="nav-item ">
                             <a class="nav-link" href="tolet.html">To Let</a>
                         </li>
                         <li class="nav-item ">

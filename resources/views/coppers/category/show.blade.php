@@ -17,7 +17,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Modify Category
             </button>
-            {!! Form::open(['action' => ['AdminController@updateCategory',$categories->id], 'method' => 'PUT', 'data-parsley-validate' => '']) !!}
+            {!! Form::open(['action' => ['AdminController@updateCategory', $categories->id], 'method' => 'PUT', 'data-parsley-validate' => '']) !!}
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">

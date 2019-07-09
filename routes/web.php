@@ -44,13 +44,17 @@ Route::match(['GET', 'POST'], 'add-category/{id}',[
     'uses' => 'AdminController@showCategory',
     'as' => 'category.show'
 ]);
+Route::match(['PUT'], 'add-category/{id}/updateCategory',[
+    'uses' => 'AdminController@updateCategory',
+    'as' => 'category.update'
+]);
 Route::match(['DELETE'], 'add-category/{id}',[
     'uses' => 'AdminController@destroyCategory',
     'as' => 'category.destroy'
 ]);
-Route::match(['PUT'], 'add-category/{id}',[
-    'uses' => 'AdminController@updateCategory',
-    'as' => 'category.update'
+Route::match(['GET', 'POST'], 'categories/{url}', [
+    'uses' => 'AdminController@single',
+    'as' => 'category.single'
 ]);
 
 //Locations Section
@@ -66,7 +70,7 @@ Route::match(['GET', 'POST'], 'add-location/{id}', [
     'uses' => 'AdminController@showLocation',
     'as' => 'location.show'
 ]);
-Route::match(['PUT'], 'add-category/{id}',[
+Route::match(['PUT'], 'add-category/{id}/updateLocation',[
     'uses' => 'AdminController@updateLocation',
     'as' => 'location.update'
 ]);
@@ -77,18 +81,37 @@ Route::match(['DELETE'], 'add-location/{id}', [
 
 
 //Routing for posts
-Route::match(['GET', 'POST'], '/start-posting', [
+Route::match(['GET', 'POST'], '/my-posting', [
     'uses' => 'PostController@index',
     'as' => 'post.start'
 ]);
-Route::match(['GET','POST'], '/post-listing',[
+Route::match(['GET','POST'], '/start-posting',[
     'uses' => 'PostController@create',
     'as' => 'post.create'
 ]);
-Route::match(['GET', 'POST'], 'post-listing/store', [
+Route::match(['GET', 'POST'], 'start-posting/store', [
     'uses' => 'PostController@store',
     'as' => 'post.store'
 ]);
+Route::match(['GET', 'POST'], 'my-posting/{id}/show', [
+    'uses' => 'PostController@show',
+    'as' => 'post.show'
+]);
+Route::match(['GET', 'POST'], 'posts/{url}', [
+    'uses' => 'PagesController@single',
+    'as' => 'post.single'
+])->where('url','[\w\d\-\_]+');
+
+Route::match(['GET', 'POST'], '/my-posting/{id}', [
+    'uses' => 'PostController@edit',
+    'as' => 'post.edit'
+]);
+
+Route::match(['PUT'], 'my-posting/{id}', [
+    'uses' => 'PostController@update',
+    'as' => 'post.update'
+]);
+
 Auth::routes();
 
 

@@ -56,7 +56,7 @@
                                 @endif
                             </td>
                             <td>
-                                {{Html::linkroute('category.show', 'Details', [$category->id], ['class' => 'btn btn-primary btn-sm', 'style' => 'float:left;margin-right:5px;'])}}
+                               {{ Html::linkroute('category.show', 'Details', [$category->id], ['class' => 'btn btn-primary btn-sm', 'style' => 'float:left;margin-right:5px;'])}}
                                 {!! Form::open(['action' => ['AdminController@destroyCategory', $category->id], 'method' => 'DELETE']) !!}
                                     {{form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
                                 {!! Form::close() !!}

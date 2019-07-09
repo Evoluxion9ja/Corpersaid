@@ -10,8 +10,8 @@
             background: #eee !important;
         }
         .image-upload1{
-            width: 150px !important;
-            height: 220px !important;
+            width: 115px !important;
+            height: 115px !important;
             background-size: cover;
             background-repeat: no-repeat;
             position: relative;
@@ -20,16 +20,17 @@
         .file-input-wrapper {
             overflow: hidden;
             position: relative;
-            width: 150px;
-            height: 220px;
+            width: 115px;
+            height: 115px;
             background-color: #fff;
             cursor: pointer;
         }
         .file-input-wrapper>input[type="file"] {
             font-size: 40px;
+            background: url('assets/images/camera.svg/');
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 115px;
+            height: 115px;
             top: 0;
             right: 0;
             opacity: 0;
@@ -37,16 +38,15 @@
             cursor: pointer;
         }
         .file-input-wrapper>.btn-file-input {
-            background: url('assets/images/camera.svg/');
             background-size: cover;
             background-repeat: no-repeat;
             border-radius: 4px;
             color: #000;
             display: inline-block;
-            height: 150px;
+            height: 115px;
             margin: 0 0 0 -1px;
             padding-left: 0;
-            width: 150px;
+            width: 115px;
             cursor: pointer;
         }
         #img_text {
@@ -77,26 +77,56 @@
                     </select>
                 </div>
             </div><hr>
-            <div class="form-group mb-2">
-                    <div class="input-group control-group increment clone" >
-                        <div class="row">
-                            <div class="col-md-3" style="margin-right:50px;">
-                                <div class="image-upload1 file-input-wrapper">
-                                    <button class="btn-file-input">SELECT FILES</button>
-                                    <input type="file" name="images[]" id="images" multiple><br><br>
-                                    <span id="img_text"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="image-upload1 file-input-wrapper">
-                                    <button class="btn-file-input">SELECT FILES</button>
-                                    <input type="file" name="images[]" id="images" multiple><br><br>
-                                    <span id="img_text"></span>
-                                </div>
-                            </div>
+            <div class="picture-upload">
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
                         </div>
                     </div>
-            </div><hr>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
+                        </div>
+                    </div>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
+                        </div>
+                    </div>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input">
+                        </div>
+                    </div>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input">
+                        </div>
+                    </div>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input">
+                        </div>
+                    </div>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input">
+                        </div>
+                    </div>
+                    <div class="upload1">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file-input">SELECT FILES</button>
+                            <input type="file" name="images[]" id="images" class="form-control custom-input">
+                        </div>
+                    </div>
+                </div>
             <div class="form-group mb-5">
                 {{form::label('title', 'Post Title')}}
                 {{form::text('title', '', ['class' => 'form-control', 'required' => '', 'placeholder' => 'Item title here'])}}

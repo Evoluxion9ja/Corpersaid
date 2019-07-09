@@ -21,4 +21,8 @@ class Post extends Model
     public function location(){
         return $this->belongsTo('App\Location');
     }
+
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }
