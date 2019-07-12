@@ -8,6 +8,7 @@ use App\Category;
 use App\Post;
 use App\Location;
 use App\User;
+use Image;
 
 
 class PostController extends Controller
@@ -21,7 +22,7 @@ class PostController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('posting.start_posting',[
+        return view('posting.post_list',[
             'posts' => $user->posts
         ]);
     }
@@ -35,7 +36,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $locations = Location::all();
-        return view('posting.post_listing',[
+        return view('posting.create_post',[
             'categories' => $categories,
             'locations' => $locations,
         ]);
@@ -54,26 +55,11 @@ class PostController extends Controller
             'location_id' => 'required|integer',
             'title' => 'required|max:255',
             'url' => 'required|max:255|alpha_dash',
-            'description' => 'required|max:300',
+            'description' => 'required|max:2000',
             'email' => 'email|required|max:255',
             'phone' => 'required|max:15',
-            'images.*' => 'image|nullable|mimes:jpeg,jpg,png,gif,svg|max:2000'
+            'images.*' => 'image|nullable'
         ]);
-
-        if($request->hasFile('images')){
-            foreach ($request->file('images') as $images) {
-                $imageNameNoExt = $images->getClientOriginalName();
-                $imageName = pathinfo($imageNameNoExt, PATHINFO_FILENAME);
-                $imageExtension = $images->getClientOriginalExtension();
-                $imageRealName = rand(123456,8765432).'_'.time().'.'.$imageExtension;
-                $location = $images->storeAs('public/post_images/',$imageRealName);
-                //$images->move(public_path().'/post_images/',$imageRealName);
-                $data[] = $imageRealName;
-            }
-        }else{
-            $data[] = 'no_image.jpg';
-        }
-
         $posts = new Post;
         $posts->user_id = Auth()->user()->id;
         $posts->category_id = $request->input('category_id');
@@ -83,7 +69,19 @@ class PostController extends Controller
         $posts->description = $request->input('description');
         $posts->email = $request->input('email');
         $posts->phone = $request->input('phone');
-        $posts->images = json_encode($data);
+
+        if($request->hasFile('images')){
+            foreach($request->file('images') as $images){
+                $imageName = rand(1234567890, 987654321).'.'.$images->getClientOriginalExtension();
+                $location = public_path('images/'.$imageName);
+                Image::make($images)->resize(1000, 650)->save($location);
+                $data[] = $imageName;
+                $posts->images = json_encode($data);
+            }
+        }else{
+            $data[] = 'no_image.jpg';
+            $posts->images = json_encode($data);
+        }
 
         $posts->save();
 
@@ -146,41 +144,16 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $posts = Post::find($id);
-
-        if($request->input('url') == $posts->url){
             $this->validate($request, [
                 'category_id' => 'required|integer',
                 'location_id' => 'required|integer',
                 'title' => 'required|max:255',
-                'description' => 'required|max:300',
+                'url' => "required|max:255|alpha_dash|unique:posts,url,$id",
+                'description' => 'required|max:2000',
                 'email' => 'email|required|max:255',
                 'phone' => 'required|max:15',
-                'images.*' => 'image|nullable|mimes:jpeg,jpg,png,gif,svg|max:2000'
+                'images.*' => 'image|sometimes'
             ]);
-        }else{
-            $this->validate($request, [
-                'category_id' => 'required|integer',
-                'location_id' => 'required|integer',
-                'title' => 'required|max:255',
-                'url' => 'required|max:255|alpha_dash|unique:post, url',
-                'description' => 'required|max:300',
-                'email' => 'email|required|max:255',
-                'phone' => 'required|max:15',
-                'images.*' => 'image|nullable|mimes:jpeg,jpg,png,gif,svg|max:2000'
-            ]);
-        }
-
-        if($request->hasFile('images')){
-            foreach ($request->file('images') as $images) {
-                $imageNameNoExt = $images->getClientOriginalName();
-                $imageName = pathinfo($imageNameNoExt, PATHINFO_FILENAME);
-                $imageExtension = $images->getClientOriginalExtension();
-                $imageRealName = rand(123456,8765432).'_'.time().'.'.$imageExtension;
-                $location = $images->storeAs('public/post_images/',$imageRealName);
-                //$images->move(public_path().'/post_images/',$imageRealName);
-                $data[] = $imageRealName;
-            }
-        }
 
         $posts = Post::find($id);
         $posts->user_id = Auth()->user()->id;
@@ -192,9 +165,18 @@ class PostController extends Controller
         $posts->email = $request->input('email');
         $posts->phone = $request->input('phone');
         if($request->hasFile('images')){
-            $posts->images = json_encode($data);
+            foreach($request->file('images') as $images){
+                $imageName = rand(1234567890,987654321).'.'.$images->getClientOriginalExtension();
+                $location = public_path('images/'.$imageName);
+                Image::make($images)->resize(1000, 650)->save($location);
+                $oldImages = $posts->images;
+                if($oldImages !== 'no_image.jpg'){
+                    Storage::delete($oldImages);
+                }
+                $data[] = $imageName;
+                $posts->images = json_encode($data);
+            }
         }
-
         $posts->save();
 
         return redirect()->route('post.show', $posts->id)->withSuccess('Post Updated Succesfully');
@@ -208,6 +190,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $posts = Post::find($id);
+       if($posts->images !== 'no_image.jpg'){
+           Storage::delete($posts->images);
+       }
+       $posts->delete();
+
+       return redirect()->route('post.list')->withSuccess('Post Deleted Successfully');
     }
 }

@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('partials._validate')
         <h2 class="text-center">My Post</h2>
         <div class="row mt-5">
             <div class="col-md-3">
@@ -39,7 +40,7 @@
                                             <a href="{{route('post.show', $post->id)}}">
                                                 @php $images = json_decode($post->images,true); @endphp
                                                 @if(is_array($images) && !empty($images))
-                                                <img src='{{ URL::asset('storage/post_images/'.$images[0]) }}' width="100%"/>
+                                                <img src='{{ URL::asset('images/'.$images[0]) }}' width="100%"/>
                                                 @endif
                                                 <div class="product-name">
                                                     <h5>{{$post->title}}</h5>

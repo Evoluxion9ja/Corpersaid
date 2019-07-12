@@ -80,7 +80,7 @@
 								<a href="{{url('posts/'.$post->url)}}">
 										@php $images = json_decode($post->images,true); @endphp
 										@if(is_array($images) && !empty($images))
-										<img src='{{ URL::asset('storage/post_images/'.$images[0]) }}' width="100%"/>
+										<img src='{{ URL::asset('images/'.$images[0]) }}' width="100%"/>
 										@endif
 									<div class="product-name">
 										<div class="product-name2">

@@ -4,6 +4,7 @@
 <div class="corpersaid-landing">
 		<div class="header2">
 			<div class="container">
+				@include('partials._validate')
 				<div class="search-anything">
 					<div class="search-here">
 						<input class="enter-search2" type="text" name="text" placeholder="Search for anything here ( Bags, PPA, Apartments, etc)">
@@ -26,14 +27,14 @@
 		<!-- <navbar end> -->
 		<div class="corpersaid-view">
 			<div class="container">
-				@include('partials._validate')
+				
 				<div class="row justify-content-center">
 					<div class="col-md-9">
 						<div class="product-view">
 							<div class="product-img">
                                     @php $images = json_decode($posts->images,true); @endphp
                                     @if(is_array($images) && !empty($images))
-                                    <img src='{{ URL::asset('storage/post_images/'.$images[0]) }}' width="100%"/>
+                                    <img src='{{ URL::asset('images/'.$images[0]) }}' width="100%"/>
                                     @endif
 								<div class="product-description">
 									<h3>{{$posts->title}}</h3>
@@ -47,7 +48,10 @@
 											<p>{{$posts->location->name}}</p>
 										</div>
 										<div class="date-posted">
-											{{Html::linkRoute('post.edit', 'Edit Post', [$posts->id], ['class' => 'btn btn-primary btn-sm'])}}
+											{{Html::linkRoute('post.edit', 'Update', [$posts->id], ['class' => 'btn btn-outline-primary btn-sm', 'style' => 'margin-right:5px;'])}}
+											{!! Form::open(['action' => ['PostController@destroy', $posts->id], 'method' => 'DELETE']) !!}
+												{{form::submit('Delete', ['class' => 'btn btn-outline-danger btn-sm'])}}
+											{!! Form::close() !!}
 										</div>
 									</div>
 									<div class="post-details">

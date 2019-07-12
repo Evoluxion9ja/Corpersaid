@@ -12,7 +12,7 @@
                         <a class="nav-link" href="#"><i class="fa fa-bell"></i><br> Notification</a>
                     </li>
                     <li class="nav-item nav-item-border">
-                        <a class="nav-link " href="{{route('post.start')}}" ><i class="fas fa-poll-h"></i><br> My Post</a>
+                        <a class="nav-link " href="{{route('post.list')}}" ><i class="fas fa-poll-h"></i><br> My Post</a>
                     </li>
                     <li class="nav-item nav-item-border">
                         <a class="nav-link " href="#" ><i class="fas fa-shopping-cart"></i><br> Subscription</a>

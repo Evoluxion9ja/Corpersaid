@@ -32,7 +32,7 @@
 							<div class="product-img">
                                     @php $images = json_decode($posts->images,true); @endphp
                                     @if(is_array($images) && !empty($images))
-                                    <img src='{{ URL::asset('storage/post_images/'.$images[0]) }}' width="100%"/>
+                                    <img src='{{ URL::asset('images/'.$images[0]) }}' width="100%"/>
                                     @endif
 								<div class="product-description">
 									<h3>{{$posts->title}}</h3>

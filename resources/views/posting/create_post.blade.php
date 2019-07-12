@@ -63,7 +63,7 @@
             <h4>Post Details</h4>
             <button class="clear-field-btn">Clear All Field</button>
         </div>
-        {!! Form::open(['action' => 'PostController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'data-parsley-validate' => '']) !!}
+        {!! Form::open(['action' => 'PostController@store','method' => 'POST', 'files' => true, 'data-parsley-validate' => '']) !!}
             <div class="form-group mb-5">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -77,8 +77,12 @@
                     </select>
                 </div>
             </div><hr>
-            <div class="picture-upload">
-                    <div class="upload1">
+            <div class="picture-upload mb-5">
+                {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                    <!--<div class="upload1">
                         <div class="file-input-wrapper">
                             <button class="btn-file-input">SELECT FILES</button>
                             <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
@@ -125,7 +129,7 @@
                             <button class="btn-file-input">SELECT FILES</button>
                             <input type="file" name="images[]" id="images" class="form-control custom-input">
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             <div class="form-group mb-5">
                 {{form::label('title', 'Post Title')}}

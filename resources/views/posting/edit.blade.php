@@ -73,56 +73,12 @@
                     'style' => 'border:1px solid #ddd;'])}}
                 </div>
             </div><hr>
-            <div class="picture-upload">
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input" multiple>
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input">
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input">
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input">
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input">
-                        </div>
-                    </div>
-                    <div class="upload1">
-                        <div class="file-input-wrapper">
-                            <button class="btn-file-input">SELECT FILES</button>
-                            <input type="file" name="images[]" id="images" class="form-control custom-input">
-                        </div>
-                    </div>
-                </div>
+            <div class="picture-upload mb-5">
+                    {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                    {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                    {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}
+                    {{form::file('images[]', ['class' => 'custom-input form-control','multiple' => 'multiple'])}}    
+            </div>
             <div class="form-group mb-5">
                 {{form::label('title', 'Post Title')}}
                 {{form::text('title', $posts->title, ['class' => 'form-control', 'required' => '', 'placeholder' => 'Item title here',

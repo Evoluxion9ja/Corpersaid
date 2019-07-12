@@ -20,6 +20,10 @@ Route::match(['GET', 'POST'], '/register', [
     'uses' => 'PagesController@register',
     'as' => 'home.register'
 ]);
+Route::match(['GET', 'POST'], 'posts/{url}', [
+    'uses' => 'PagesController@single',
+    'as' => 'post.single'
+])->where('url','[\w\d\-\_]+');
 
 
 //Route For Admin
@@ -81,33 +85,31 @@ Route::match(['DELETE'], 'add-location/{id}', [
 
 
 //Routing for posts
-Route::match(['GET', 'POST'], '/my-posting', [
+Route::match(['GET', 'POST'], '/post-list', [
     'uses' => 'PostController@index',
-    'as' => 'post.start'
+    'as' => 'post.list'
 ]);
-Route::match(['GET','POST'], '/start-posting',[
+Route::match(['GET', 'POST'], '/posting-page', [
     'uses' => 'PostController@create',
     'as' => 'post.create'
 ]);
-Route::match(['GET', 'POST'], 'start-posting/store', [
+Route::match(['GET', 'POST'], 'posting-page/store', [
     'uses' => 'PostController@store',
     'as' => 'post.store'
 ]);
-Route::match(['GET', 'POST'], 'my-posting/{id}/show', [
+Route::match(['GET', 'POST'], 'posting-page/{id}', [
     'uses' => 'PostController@show',
     'as' => 'post.show'
 ]);
-Route::match(['GET', 'POST'], 'posts/{url}', [
-    'uses' => 'PagesController@single',
-    'as' => 'post.single'
-])->where('url','[\w\d\-\_]+');
-
-Route::match(['GET', 'POST'], '/my-posting/{id}', [
+Route::match(['GET', 'POST'], 'post-list/{id}', [
     'uses' => 'PostController@edit',
     'as' => 'post.edit'
 ]);
-
-Route::match(['PUT'], 'my-posting/{id}', [
+Route::match(['DELETE'], 'post-list/{id}', [
+    'uses' => 'PostController@destroy',
+    'as' => 'Post.destroy'
+]);
+Route::match(['PUT'], 'post-list/{id}', [
     'uses' => 'PostController@update',
     'as' => 'post.update'
 ]);
